@@ -30,6 +30,7 @@ export class CrisisDetailComponent implements OnInit {
     );
   }
 
+
   gotoCrises(crisis: Crisis) {
     const crisisId = crisis ? crisis.id : null;
     // Pass along the Crisis id if available
