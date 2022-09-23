@@ -1,11 +1,10 @@
-// TODO: Feature Componetized like CrisisCenter
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { CrisisService } from '../crisis.service';
 import { Crisis } from '../crisis';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-crisis-list',

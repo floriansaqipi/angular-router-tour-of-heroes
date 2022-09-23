@@ -1,8 +1,10 @@
-<h2>Crises</h2>
-<div *ngIf="crisis$ | async as crisis">
-  <h3>{{ crisis.name }}</h3>
+<div *ngIf="crisis">
+  <h3>{{ editName }}</h3>
   <p>Id: {{ crisis.id }}</p>
-  <label for="crisis-name">crisis name: </label>
-  <input type="text" id="crisis-name" [(ngModel)]="crisis.name" placeholder="name"/>
-  <button type="button" (click)="gotoCrises(crisis)">Back</button>
+  <label for="crisis-name">Crisis name: </label>
+  <input type="text" id="crisis-name" [(ngModel)]="editName" placeholder="name"/>
+  <div>
+    <button type="button" (click)="save()">Save</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+  </div>
 </div>
