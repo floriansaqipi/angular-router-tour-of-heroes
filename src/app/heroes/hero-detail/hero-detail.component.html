@@ -4,7 +4,13 @@
   <p>Id: {{ hero.id }}</p>
   <label for="hero-name">Hero name: </label>
   <input type="text" id="hero-name" [(ngModel)]="hero.name" placeholder="name"/>
-  <button type="button" (click)="gotoHeroes(hero)">Back</button>
-  <button type="button" (click)="previousHero(hero)"><<</button>
-  <button type="button" (click)="nextHero(hero)">>></button>
+  
+  <div class="buttons">
+
+    <button type="button" (click)="gotoHeroes(hero)">Back</button>
+    <div class="navigate">
+      <button  type="button" (click)="previousHero()"><<</button>
+      <button type="button" (click)="nextHero()">>></button>
+    </div>
+  </div>
 </div>

@@ -13,6 +13,7 @@ import { Hero } from '../hero';
 })
 export class HeroDetailComponent implements OnInit {
   hero$!: Observable<Hero>;
+  id! : number | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,8 +26,10 @@ export class HeroDetailComponent implements OnInit {
     // const id = this.route.snapshot.paramMap.get('id')!;
     // this.hero$ = this.service.getHero(id);
     this.hero$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getHero(params.get('id')!))
+      switchMap((params: ParamMap) => {
+        this.id = +params.get('id')!;
+        return this.service.getHero(this.id);
+      })
     );
   }
 
@@ -38,11 +41,12 @@ export class HeroDetailComponent implements OnInit {
     this.router.navigate(['/heroes', { id: heroId, foo: 'foo' }]);
   }
 
-  nextHero(hero: Hero){
-
+  previousHero(){
+    this.hero$ = this.service.getHero(--this.id!);      
   }
 
-  previousHero(hero: Hero){
-    
+  nextHero(){
+    this.hero$ = this.service.getHero(++this.id!);      
   }
+
 }
