@@ -13,7 +13,6 @@ import { Hero } from '../hero';
 })
 export class HeroDetailComponent implements OnInit {
   hero$!: Observable<Hero>;
-  id! : number | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,9 +25,8 @@ export class HeroDetailComponent implements OnInit {
     // const id = this.route.snapshot.paramMap.get('id')!;
     // this.hero$ = this.service.getHero(id);
     this.hero$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => {
-        this.id = +params.get('id')!;
-        return this.service.getHero(this.id);
+      switchMap((params: ParamMap) => {;
+        return this.service.getHero(params.get('id')!);
       })
     );
   }
@@ -41,12 +39,12 @@ export class HeroDetailComponent implements OnInit {
     this.router.navigate(['/heroes', { id: heroId, foo: 'foo' }]);
   }
 
-  previousHero(){
-    this.hero$ = this.service.getHero(--this.id!);      
-  }
+  // isLastHero() : boolean{
+  //   // console.log('+++++++++++++++++++++++++++'+this.service.getHero(20));
+  //   return this.service.getHero(this.id! + 1) ? false : true; 
+  // }
 
-  nextHero(){
-    this.hero$ = this.service.getHero(++this.id!);      
-  }
-
+  // isFirstHero() : boolean{
+  //   return this.service.getHero(this.id! - 1) ? false : true; 
+  // }
 }
