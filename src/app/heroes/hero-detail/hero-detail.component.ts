@@ -37,4 +37,12 @@ export class HeroDetailComponent implements OnInit {
     // Include a junk 'foo' property for fun.
     this.router.navigate(['/heroes', { id: heroId, foo: 'foo' }]);
   }
+
+  nextHero(hero: Hero){
+
+  }
+
+  previousHero(hero: Hero){
+    
+  }
 }
